@@ -1,0 +1,16 @@
+{
+  "favoriteRecords": [
+    {
+      "id": "first",
+      "band": "Rush",
+      "album": "Moving Pictures",
+      "rate": 10
+    },
+    {
+      "id": "second",
+      "band": "Dream Theater",
+      "album": "Scenes From a Memory",
+      "rate": 10
+    }
+  ]
+}

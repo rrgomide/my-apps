@@ -18,8 +18,8 @@ const meta: MetaFunction = () => {
 const apps = [
   {
     id: 'app001',
-    description: 'Simple CRUD',
-    link: '/simple-crud',
+    description: 'My Favorite Music Albums of All Time',
+    link: '/favorite-music-albums',
   },
   {
     id: 'app002',
