@@ -1,23 +1,53 @@
-import type { LoaderFunction } from '@remix-run/node'
-import { json } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
-import { getFakeData } from '~/server/fake-data.server'
+import {
+  useLoaderData,
+  useActionData,
+  useTransition,
+  Link,
+} from '@remix-run/react'
 
-const loader: LoaderFunction = () => {
-  const fakeData = getFakeData()
-  return json(fakeData)
+import type { MetaFunction, LoaderArgs, ActionArgs } from '@remix-run/node'
+import { json } from '@remix-run/node'
+import { RunnableApp } from '~/components/RunnableApp'
+
+const meta: MetaFunction = () => {
+  return {
+    title: 'Index',
+  }
 }
 
-export default function Index() {
-  const fakeData = useLoaderData()
+const apps = [
+  {
+    id: 'app001',
+    description: 'Simple CRUD',
+    link: '/simple-crud',
+  },
+  {
+    id: 'app002',
+    description: 'App 2',
+    link: '/app2',
+  },
+  {
+    id: 'app003',
+    description: 'App 3',
+    link: '/app3',
+  },
+]
 
+function Index() {
   return (
-    <>
-      <h1 className="font-semibold">Hello, render.com!</h1>
-      <br />
-      <pre>{JSON.stringify(fakeData, null, 2)}</pre>
-    </>
+    <ul className="flex flex-col sm:flex-row items-center justify-center">
+      {apps.map(({ id, description, link }) => {
+        return (
+          <li className="m-2 w-full sm:w-64" key={id}>
+            <Link to={link}>
+              <RunnableApp>{description}</RunnableApp>
+            </Link>
+          </li>
+        )
+      })}
+    </ul>
   )
 }
 
-export { loader }
+export { meta }
+export default Index
